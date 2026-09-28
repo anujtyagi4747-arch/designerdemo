@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="BEDORA - Premium Beds & Bedroom Furniture">
+<title>BEDORA | Premium Beds & Bedroom Furniture</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#fff;
+    color:#171717;
+    overflow-x:hidden;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    z-index:9999;
+    border-bottom:1px solid rgba(0,0,0,.07);
+}
+
+.header-inner{
+    width:100%;
+    height:100%;
+    max-width:1400px;
+    margin:auto;
+    padding:0 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:#111;
+    white-space:nowrap;
+}
+
+.logo span{
+    font-weight:400;
+}
+
+/* DESKTOP NAV */
+
+.desktop-nav{
+    display:none;
+}
+
+.desktop-nav a{
+    font-size:13px;
+    font-weight:600;
+    margin:0 12px;
+    position:relative;
+}
+
+.desktop-nav a:after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:1px;
+    background:#111;
+    transition:.3s;
+}
+
+.desktop-nav a:hover:after{
+    width:100%;
+}
+
+/* HEADER ICONS */
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.icon-btn{
+    width:39px;
+    height:39px;
+    border:0;
+    background:#f5f5f5;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-size:17px;
+    transition:.25s;
+}
+
+.icon-btn:hover{
+    background:#111;
+    color:#fff;
+}
+
+.cart-btn{
+    position:relative;
+}
+
+.cart-count{
+    position:absolute;
+    right:-3px;
+    top:-3px;
+    width:17px;
+    height:17px;
+    border-radius:50%;
+    background:#111;
+    color:#fff;
+    font-size:9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* HAMBURGER */
+
+.menu-btn{
+    width:39px;
+    height:39px;
+    border:0;
+    background:#111;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    cursor:pointer;
+}
+
+.menu-btn span{
+    width:16px;
+    height:1.5px;
+    background:#fff;
+    display:block;
+}
+
+/* ================= MOBILE MENU ================= */
+
+.mobile-menu{
+    position:fixed;
+    top:70px;
+    left:0;
+    width:100%;
+    height:calc(100vh - 70px);
+    background:#fff;
+    z-index:9998;
+    transform:translateX(100%);
+    transition:.4s cubic-bezier(.77,0,.18,1);
+    padding:35px 25px;
+    overflow-y:auto;
+}
+
+.mobile-menu.active{
+    transform:translateX(0);
+}
+
+.mobile-menu-title{
+    font-size:11px;
+    letter-spacing:2px;
+    color:#888;
+    margin-bottom:22px;
+}
+
+.mobile-link{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+    border-bottom:1px solid #eee;
+    font-size:20px;
+    font-weight:600;
+}
+
+.mobile-link span{
+    font-size:15px;
+    color:#999;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    position:relative;
+    width:100%;
+    height:100svh;
+    min-height:650px;
+    margin-top:70px;
+    overflow:hidden;
+    background:#dedbd5;
+}
+
+.hero-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:1;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.20) 0%,
+            rgba(0,0,0,.04) 45%,
+            rgba(0,0,0,.55) 100%
+        );
+}
+
+.hero-content{
+    position:absolute;
+    z-index:3;
+    left:0;
+    bottom:55px;
+    width:100%;
+    padding:0 24px;
+    color:#fff;
+}
+
+.hero-small{
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    font-weight:600;
+}
+
+.hero-title{
+    font-size:clamp(42px,11vw,76px);
+    line-height:.95;
+    font-weight:700;
+    letter-spacing:-2px;
+    max-width:700px;
+}
+
+.hero-text{
+    margin-top:18px;
+    max-width:440px;
+    font-size:14px;
+    line-height:1.6;
+    color:rgba(255,255,255,.9);
+}
+
+.hero-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.hero-btn{
+    border:0;
+    padding:14px 23px;
+    border-radius:3px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.4px;
+    transition:.25s;
+}
+
+.hero-btn.primary{
+    background:#fff;
+    color:#111;
+}
+
+.hero-btn.secondary{
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.7);
+    backdrop-filter:blur(6px);
+}
+
+.hero-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* VIDEO FALLBACK */
+
+.video-fallback{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:
+        linear-gradient(
+            135deg,
+            #d9d1c8,
+            #8e8174
+        );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.fallback-bed{
+    width:80%;
+    max-width:650px;
+    height:190px;
+    background:#55483e;
+    border-radius:20px 20px 5px 5px;
+    position:relative;
+    box-shadow:0 30px 60px rgba(0,0,0,.28);
+}
+
+.fallback-bed:before{
+    content:"";
+    position:absolute;
+    left:4%;
+    top:-75px;
+    width:92%;
+    height:100px;
+    background:#f0ece6;
+    border-radius:18px 18px 7px 7px;
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+.fallback-bed:after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-70px;
+    height:70px;
+    background:#332a25;
+    border-radius:0 0 12px 12px;
+}
+
+/* ================= SCROLL INDICATOR ================= */
+
+.scroll-indicator{
+    position:absolute;
+    z-index:4;
+    right:22px;
+    bottom:45px;
+    color:#fff;
+    writing-mode:vertical-rl;
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:.8;
+}
+
+.scroll-line{
+    width:1px;
+    height:55px;
+    background:rgba(255,255,255,.7);
+    margin-top:10px;
+    margin-left:4px;
+    animation:scrollLine 1.7s infinite;
+}
+
+@keyframes scrollLine{
+    0%{
+        transform:scaleY(.2);
+        transform-origin:top;
+    }
+    50%{
+        transform:scaleY(1);
+        transform-origin:top;
+    }
+    100%{
+        transform:scaleY(.2);
+        transform-origin:bottom;
+    }
+}
+
+/* ================= INTRO ================= */
+
+.intro{
+    padding:75px 24px;
+    background:#fff;
+}
+
+.intro-inner{
+    max-width:1150px;
+    margin:auto;
+}
+
+.eyebrow{
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#777;
+    margin-bottom:17px;
+}
+
+.intro-title{
+    font-size:34px;
+    line-height:1.08;
+    letter-spacing:-1px;
+    font-weight:600;
+    max-width:650px;
+}
+
+.intro-text{
+    margin-top:20px;
+    max-width:600px;
+    color:#666;
+    font-size:14px;
+    line-height:1.75;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(min-width:768px){
+
+    .header{
+        height:78px;
+    }
+
+    .header-inner{
+        padding:0 45px;
+    }
+
+    .mobile-menu,
+    .menu-btn{
+        display:none;
+    }
+
+    .desktop-nav{
+        display:flex;
+        align-items:center;
+    }
+
+    .hero{
+        margin-top:78px;
+    }
+
+    .hero-content{
+        padding:0 7%;
+        bottom:80px;
+    }
+
+    .intro{
+        padding:110px 7%;
+    }
+
+    .intro-title{
+        font-size:52px;
+    }
+
+    .hero-title{
+        font-size:78px;
+    }
+
+    .hero-text{
+        font-size:15px;
+    }
+
+    .scroll-indicator{
+        right:45px;
+        bottom:65px;
+    }
+}
+
+@media(max-width:380px){
+
+    .logo{
+        font-size:21px;
+    }
+
+    .header-inner{
+        padding:0 14px;
+    }
+
+    .header-actions{
+        gap:5px;
+    }
+
+    .icon-btn,
+    .menu-btn{
+        width:35px;
+        height:35px;
+    }
+
+    .hero-content{
+        bottom:42px;
+        padding:0 18px;
+    }
+
+    .hero-title{
+        font-size:40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <a href="#" class="logo">
+            BED<span>ORA</span>
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="#beds">Beds</a>
+            <a href="#storage">Storage Beds</a>
+            <a href="#bedroom">Bedroom</a>
+            <a href="#bestsellers">Best Sellers</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button class="icon-btn" onclick="openSearch()" aria-label="Search">
+                ⌕
+            </button>
+
+            <button class="icon-btn cart-btn" onclick="openCart()" aria-label="Cart">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-title">
+        SHOP BEDORA
+    </div>
+
+    <a href="#beds" class="mobile-link" onclick="closeMenu()">
+        Beds
+        <span>→</span>
+    </a>
+
+    <a href="#storage" class="mobile-link" onclick="closeMenu()">
+        Storage Beds
+        <span>→</span>
+    </a>
+
+    <a href="#bedroom" class="mobile-link" onclick="closeMenu()">
+        Bedroom Furniture
+        <span>→</span>
+    </a>
+
+    <a href="#bestsellers" class="mobile-link" onclick="closeMenu()">
+        Best Sellers
+        <span>→</span>
+    </a>
+
+    <a href="#about" class="mobile-link" onclick="closeMenu()">
+        About BEDORA
+        <span>→</span>
+    </a>
+
+</div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <!-- FALLBACK BED VISUAL -->
+
+    <div class="video-fallback">
+        <div class="fallback-bed"></div>
+    </div>
+
+    <!--
+    VIDEO
+    Replace the video URL later with your own MP4.
+    Muted + autoplay + loop is used for mobile compatibility.
+    -->
+
+    <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster=""
+        id="heroVideo">
+
+        <source
+            src="https://cdn.coverr.co/videos/coverr-a-bed-in-a-bedroom-1572/1080p.mp4"
+            type="video/mp4">
+
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            BEDORA HOME
+        </div>
+
+        <h1 class="hero-title">
+            Sleep<br>
+            Beautifully.
+        </h1>
+
+        <p class="hero-text">
+            Premium beds designed to bring comfort,
+            character and timeless style into your bedroom.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="hero-btn primary"
+                onclick="document.getElementById('beds').scrollIntoView()">
+                SHOP BEDS
+            </button>
+
+            <button
+                class="hero-btn secondary"
+                onclick="document.getElementById('bestsellers').scrollIntoView()">
+                EXPLORE COLLECTION
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="scroll-indicator">
+        SCROLL
+        <div class="scroll-line"></div>
+    </div>
+
+</section>
+
+
+<!-- ================= INTRO ================= -->
+
+<section class="intro">
+
+    <div class="intro-inner">
+
+        <div class="eyebrow">
+            THE BEDORA COLLECTION
+        </div>
+
+        <h2 class="intro-title">
+            Furniture that makes your bedroom feel like home.
+        </h2>
+
+        <p class="intro-text">
+            Discover thoughtfully designed beds and bedroom furniture
+            made for modern living. Clean silhouettes, practical storage
+            and comfortable finishes come together in every BEDORA piece.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BASIC JS ================= -->
+
+<script>
+
+let cartItems = 0;
+
+function toggleMenu(){
+
+    const menu = document.getElementById("mobileMenu");
+
+    menu.classList.toggle("active");
+
+}
+
+function closeMenu(){
+
+    document
+        .getElementById("mobileMenu")
+        .classList.remove("active");
+
+}
+
+function openCart(){
+
+    alert("Your cart is empty. Products will be added in the next section.");
+
+}
+
+function openSearch(){
+
+    const query = prompt("What are you looking for?");
+
+    if(query){
+
+        alert("Searching for: " + query);
+
+    }
+
+}
+
+
+/* VIDEO AUTOPLAY FIX */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+    const video = document.getElementById("heroVideo");
+
+    if(video){
+
+        video.muted = true;
+
+        const playVideo = () => {
+
+            video.play().catch(() => {
+                console.log("Autoplay waiting for browser permission.");
+            });
+
+        };
+
+        playVideo();
+
+        document.addEventListener("touchstart",playVideo,{once:true});
+
+    }
+
+});
+
+
+/* HEADER SHADOW */
+
+window.addEventListener("scroll",function(){
+
+    const header = document.querySelector(".header");
+
+    if(window.scrollY > 20){
+
+        header.style.boxShadow =
+            "0 5px 25px rgba(0,0,0,.08)";
+
+    }else{
+
+        header.style.boxShadow = "none";
+
+    }
+
+});
+
+</script>
+
+</body>
+              </html>
