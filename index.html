@@ -2,1848 +2,1007 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ffffff">
-<meta name="description" content="BEDORA - Premium Beds & Bedroom Furniture">
-<title>BEDORA | Premium Beds & Bedroom Furniture</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>ANUJ HOMES | Premium Furniture</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#fff;
-    color:#171717;
-    overflow-x:hidden;
+font-family:Arial,sans-serif;
+background:#faf7f4;
+color:#28191d;
+overflow-x:hidden
+}
+:root{
+--red:#681f32;
+--dark:#42121f;
+--light:#f8eeee;
+--gold:#c59a59;
+--gray:#756b6d;
+--border:#eadedf
+}
+button,input{font-family:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+
+/* TOP */
+.top{
+height:32px;
+background:var(--dark);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+letter-spacing:.5px;
+text-align:center;
+padding:0 8px
 }
 
-button,
-input{
-    font-family:inherit;
+/* HEADER */
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:#fff;
+border-bottom:1px solid var(--border)
 }
-
-a{
-    color:inherit;
-    text-decoration:none;
+.head{
+height:64px;
+padding:0 14px;
+display:flex;
+align-items:center;
+justify-content:space-between
 }
-
-/* ================= HEADER ================= */
-
-.header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:70px;
-    background:rgba(255,255,255,.96);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-    z-index:9999;
-    border-bottom:1px solid rgba(0,0,0,.07);
+.menu{
+width:38px;
+height:38px;
+border:1px solid var(--border);
+border-radius:50%;
+background:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:4px
 }
-
-.header-inner{
-    width:100%;
-    height:100%;
-    max-width:1400px;
-    margin:auto;
-    padding:0 22px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.menu i{
+width:15px;
+height:2px;
+background:var(--red);
+display:block
 }
-
 .logo{
-    font-size:25px;
-    font-weight:800;
-    letter-spacing:2px;
-    color:#111;
-    white-space:nowrap;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+text-align:center;
+white-space:nowrap
+}
+.logo b{
+display:block;
+font-size:20px;
+letter-spacing:1.5px;
+color:var(--red)
+}
+.logo small{
+font-size:7px;
+letter-spacing:2px;
+color:#88787b
+}
+.actions{
+display:flex;
+gap:6px
+}
+.icon{
+width:37px;
+height:37px;
+border:0;
+border-radius:50%;
+background:var(--light);
+color:var(--red);
+font-size:17px;
+position:relative
+}
+.count{
+position:absolute;
+right:-2px;
+top:-2px;
+width:16px;
+height:16px;
+border-radius:50%;
+background:var(--red);
+color:white;
+font-size:8px;
+display:flex;
+align-items:center;
+justify-content:center
 }
 
-.logo span{
-    font-weight:400;
+/* SEARCH */
+.search{
+padding:0 13px 11px
+}
+.searchbox{
+height:40px;
+border:1px solid var(--border);
+background:#faf8f7;
+border-radius:6px;
+display:flex;
+align-items:center;
+padding:0 12px;
+gap:8px
+}
+.searchbox span{
+font-size:17px;
+color:var(--red)
+}
+.searchbox input{
+border:0;
+outline:0;
+background:none;
+width:100%;
+font-size:12px
 }
 
-/* DESKTOP NAV */
-
-.desktop-nav{
-    display:none;
+/* NAV */
+.nav{
+display:none
 }
 
-.desktop-nav a{
-    font-size:13px;
-    font-weight:600;
-    margin:0 12px;
-    position:relative;
+/* DRAWER */
+.drawer{
+position:fixed;
+left:0;
+top:0;
+bottom:0;
+width:82%;
+max-width:330px;
+background:#fff;
+z-index:3000;
+transform:translateX(-105%);
+transition:.3s;
+box-shadow:10px 0 40px #0003
+}
+.drawer.open{transform:translateX(0)}
+.drawertop{
+height:85px;
+background:var(--red);
+color:#fff;
+padding:20px;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+.drawertop b{
+font-size:19px;
+letter-spacing:1px
+}
+.drawertop small{
+display:block;
+font-size:7px;
+letter-spacing:2px;
+margin-top:4px
+}
+.close{
+border:0;
+background:#ffffff22;
+color:white;
+width:36px;
+height:36px;
+border-radius:50%;
+font-size:22px
+}
+.links a{
+display:flex;
+justify-content:space-between;
+padding:17px 20px;
+border-bottom:1px solid #f0e7e8;
+font-size:13px;
+font-weight:bold
+}
+.links a span:last-child{color:#999}
+.overlay{
+position:fixed;
+inset:0;
+background:#17070b99;
+z-index:2500;
+opacity:0;
+visibility:hidden;
+transition:.3s
+}
+.overlay.open{
+opacity:1;
+visibility:visible
 }
 
-.desktop-nav a:after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-7px;
-    width:0;
-    height:1px;
-    background:#111;
-    transition:.3s;
-}
-
-.desktop-nav a:hover:after{
-    width:100%;
-}
-
-/* HEADER ICONS */
-
-.header-actions{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.icon-btn{
-    width:39px;
-    height:39px;
-    border:0;
-    background:#f5f5f5;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    font-size:17px;
-    transition:.25s;
-}
-
-.icon-btn:hover{
-    background:#111;
-    color:#fff;
-}
-
-.cart-btn{
-    position:relative;
-}
-
-.cart-count{
-    position:absolute;
-    right:-3px;
-    top:-3px;
-    width:17px;
-    height:17px;
-    border-radius:50%;
-    background:#111;
-    color:#fff;
-    font-size:9px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-/* HAMBURGER */
-
-.menu-btn{
-    width:39px;
-    height:39px;
-    border:0;
-    background:#111;
-    color:#fff;
-    border-radius:50%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:4px;
-    cursor:pointer;
-}
-
-.menu-btn span{
-    width:16px;
-    height:1.5px;
-    background:#fff;
-    display:block;
-}
-
-/* ================= MOBILE MENU ================= */
-
-.mobile-menu{
-    position:fixed;
-    top:70px;
-    left:0;
-    width:100%;
-    height:calc(100vh - 70px);
-    background:#fff;
-    z-index:9998;
-    transform:translateX(100%);
-    transition:.4s cubic-bezier(.77,0,.18,1);
-    padding:35px 25px;
-    overflow-y:auto;
-}
-
-.mobile-menu.active{
-    transform:translateX(0);
-}
-
-.mobile-menu-title{
-    font-size:11px;
-    letter-spacing:2px;
-    color:#888;
-    margin-bottom:22px;
-}
-
-.mobile-link{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 0;
-    border-bottom:1px solid #eee;
-    font-size:20px;
-    font-weight:600;
-}
-
-.mobile-link span{
-    font-size:15px;
-    color:#999;
-}
-
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
-    position:relative;
-    width:100%;
-    height:100svh;
-    min-height:650px;
-    margin-top:70px;
-    overflow:hidden;
-    background:#dedbd5;
+height:570px;
+position:relative;
+overflow:hidden;
+background:#32101c
+}
+.hero video{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover
+}
+.cover{
+position:absolute;
+inset:0;
+background:linear-gradient(
+180deg,
+#25091233,
+#350d1dcc
+)
+}
+.heroText{
+position:absolute;
+left:18px;
+right:18px;
+bottom:40px;
+color:white
+}
+.tag{
+display:inline-block;
+padding:7px 10px;
+border:1px solid #fff5;
+border-radius:30px;
+font-size:8px;
+letter-spacing:1.3px;
+margin-bottom:14px;
+background:#0003
+}
+.hero h1{
+font-family:Georgia,serif;
+font-size:40px;
+line-height:1.02;
+max-width:340px;
+margin-bottom:13px
+}
+.hero h1 span{color:#dfbb7b}
+.hero p{
+font-size:12px;
+line-height:1.7;
+max-width:330px;
+color:#fffd
+}
+.buttons{
+display:flex;
+gap:8px;
+margin-top:20px
+}
+.btn1,.btn2{
+height:44px;
+padding:0 17px;
+border-radius:3px;
+font-size:10px;
+font-weight:bold
+}
+.btn1{
+border:0;
+background:white;
+color:var(--red)
+}
+.btn2{
+border:1px solid #fff9;
+background:#fff1;
+color:white
 }
 
-.hero-video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:1;
+/* TRUST */
+.trust{
+display:grid;
+grid-template-columns:1fr 1fr;
+background:#fff;
+border-bottom:1px solid var(--border)
+}
+.trust div{
+min-height:70px;
+display:flex;
+align-items:center;
+gap:8px;
+padding:10px;
+border-right:1px solid var(--border);
+border-bottom:1px solid var(--border)
+}
+.trust div:nth-child(even){border-right:0}
+.trust strong{
+font-size:9px;
+display:block
+}
+.trust small{
+font-size:7px;
+color:#918487
+}
+.ticon{
+width:29px;
+height:29px;
+border-radius:50%;
+background:var(--light);
+display:flex;
+align-items:center;
+justify-content:center;
+color:var(--red);
+font-size:13px;
+flex-shrink:0
 }
 
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    z-index:2;
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,.20) 0%,
-            rgba(0,0,0,.04) 45%,
-            rgba(0,0,0,.55) 100%
-        );
+/* SECTION */
+.section{
+padding:45px 14px
+}
+.kicker{
+font-size:8px;
+font-weight:bold;
+letter-spacing:2px;
+color:var(--red);
+text-transform:uppercase;
+margin-bottom:7px
+}
+.title{
+font-family:Georgia,serif;
+font-size:28px;
+line-height:1.1;
+color:#351c23
+}
+.desc{
+font-size:10px;
+line-height:1.6;
+color:var(--gray);
+margin-top:8px;
+max-width:310px
+}
+.sectionhead{
+display:flex;
+justify-content:space-between;
+align-items:end;
+margin-bottom:20px
+}
+.view{
+font-size:9px;
+font-weight:bold;
+color:var(--red);
+border-bottom:1px solid var(--red);
+padding-bottom:3px
 }
 
-.hero-content{
-    position:absolute;
-    z-index:3;
-    left:0;
-    bottom:55px;
-    width:100%;
-    padding:0 24px;
-    color:#fff;
+/* CATEGORIES */
+.cats{
+display:flex;
+gap:10px;
+overflow-x:auto;
+scrollbar-width:none;
+padding-bottom:5px
+}
+.cats::-webkit-scrollbar{display:none}
+.cat{
+min-width:112px;
+height:145px;
+position:relative;
+overflow:hidden;
+border-radius:6px;
+background:#ddd
+}
+.cat img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+.cat:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(0deg,#230b14cc,transparent 65%)
+}
+.cat b{
+position:absolute;
+bottom:20px;
+left:9px;
+z-index:2;
+color:white;
+font-size:10px
+}
+.cat small{
+position:absolute;
+bottom:8px;
+left:9px;
+z-index:2;
+color:#fffb;
+font-size:7px
 }
 
-.hero-small{
-    font-size:11px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-bottom:12px;
-    font-weight:600;
+/* BANNER */
+.banner{
+margin:0 14px 15px;
+height:240px;
+position:relative;
+overflow:hidden;
+border-radius:7px
+}
+.banner img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+.banner:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(90deg,#3c101fcc,#3c101f22)
+}
+.bannerText{
+position:absolute;
+z-index:2;
+left:20px;
+top:50%;
+transform:translateY(-50%);
+color:white;
+max-width:240px
+}
+.bannerText small{
+font-size:8px;
+letter-spacing:1.5px;
+color:#e0bc7b
+}
+.bannerText h2{
+font-family:Georgia,serif;
+font-size:28px;
+line-height:1.1;
+margin:8px 0
+}
+.bannerText p{
+font-size:9px;
+line-height:1.5;
+color:#fffc;
+margin-bottom:13px
+}
+.bannerText button{
+background:white;
+color:var(--red);
+border:0;
+padding:10px 14px;
+font-size:9px;
+font-weight:bold;
+border-radius:2px
 }
 
-.hero-title{
-    font-size:clamp(42px,11vw,76px);
-    line-height:.95;
-    font-weight:700;
-    letter-spacing:-2px;
-    max-width:700px;
-}
-
-.hero-text{
-    margin-top:18px;
-    max-width:440px;
-    font-size:14px;
-    line-height:1.6;
-    color:rgba(255,255,255,.9);
-}
-
-.hero-buttons{
-    display:flex;
-    gap:10px;
-    margin-top:25px;
-    flex-wrap:wrap;
-}
-
-.hero-btn{
-    border:0;
-    padding:14px 23px;
-    border-radius:3px;
-    cursor:pointer;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.4px;
-    transition:.25s;
-}
-
-.hero-btn.primary{
-    background:#fff;
-    color:#111;
-}
-
-.hero-btn.secondary{
-    background:rgba(255,255,255,.12);
-    color:#fff;
-    border:1px solid rgba(255,255,255,.7);
-    backdrop-filter:blur(6px);
-}
-
-.hero-btn:hover{
-    transform:translateY(-2px);
-}
-
-/* VIDEO FALLBACK */
-
-.video-fallback{
-    position:absolute;
-    inset:0;
-    z-index:0;
-    background:
-        linear-gradient(
-            135deg,
-            #d9d1c8,
-            #8e8174
-        );
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-}
-
-.fallback-bed{
-    width:80%;
-    max-width:650px;
-    height:190px;
-    background:#55483e;
-    border-radius:20px 20px 5px 5px;
-    position:relative;
-    box-shadow:0 30px 60px rgba(0,0,0,.28);
-}
-
-.fallback-bed:before{
-    content:"";
-    position:absolute;
-    left:4%;
-    top:-75px;
-    width:92%;
-    height:100px;
-    background:#f0ece6;
-    border-radius:18px 18px 7px 7px;
-    box-shadow:0 15px 30px rgba(0,0,0,.15);
-}
-
-.fallback-bed:after{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:-70px;
-    height:70px;
-    background:#332a25;
-    border-radius:0 0 12px 12px;
-}
-
-/* ================= SCROLL INDICATOR ================= */
-
-.scroll-indicator{
-    position:absolute;
-    z-index:4;
-    right:22px;
-    bottom:45px;
-    color:#fff;
-    writing-mode:vertical-rl;
-    font-size:9px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    opacity:.8;
-}
-
-.scroll-line{
-    width:1px;
-    height:55px;
-    background:rgba(255,255,255,.7);
-    margin-top:10px;
-    margin-left:4px;
-    animation:scrollLine 1.7s infinite;
-}
-
-@keyframes scrollLine{
-    0%{
-        transform:scaleY(.2);
-        transform-origin:top;
-    }
-    50%{
-        transform:scaleY(1);
-        transform-origin:top;
-    }
-    100%{
-        transform:scaleY(.2);
-        transform-origin:bottom;
-    }
-}
-
-/* ================= INTRO ================= */
-
+/* INTRO */
 .intro{
-    padding:75px 24px;
-    background:#fff;
+text-align:center;
+padding:42px 15px 25px
+}
+.intro h2{
+font-family:Georgia,serif;
+font-size:29px;
+margin-bottom:8px
+}
+.intro p{
+font-size:10px;
+line-height:1.7;
+color:var(--gray);
+max-width:320px;
+margin:auto
 }
 
-.intro-inner{
-    max-width:1150px;
-    margin:auto;
+/* PRODUCT PREVIEW */
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+.card{
+background:white;
+border:1px solid #eee5e5;
+border-radius:5px;
+overflow:hidden
+}
+.pic{
+aspect-ratio:1/1.05;
+background:#eee;
+position:relative
+}
+.pic img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+.badge{
+position:absolute;
+top:7px;
+left:7px;
+background:var(--red);
+color:white;
+padding:5px 6px;
+font-size:6px;
+font-weight:bold
+}
+.heart{
+position:absolute;
+right:7px;
+top:7px;
+width:28px;
+height:28px;
+border:0;
+border-radius:50%;
+background:#fffE;
+color:var(--red)
+}
+.info{padding:9px}
+.info small{
+font-size:7px;
+color:#9b8d90;
+text-transform:uppercase
+}
+.info h3{
+font-size:11px;
+margin:4px 0;
+line-height:1.3
+}
+.price{
+color:var(--red);
+font-size:12px;
+font-weight:bold
+}
+.old{
+font-size:8px;
+color:#aaa;
+text-decoration:line-through;
+margin-left:5px
+}
+.add{
+margin-top:8px;
+width:100%;
+height:30px;
+border:0;
+background:var(--red);
+color:white;
+border-radius:3px;
+font-size:8px;
+font-weight:bold
 }
 
-.eyebrow{
-    font-size:10px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:#777;
-    margin-bottom:17px;
+/* BOTTOM */
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:60px;
+background:#fffF;
+border-top:1px solid var(--border);
+z-index:2000;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+backdrop-filter:blur(10px)
 }
-
-.intro-title{
-    font-size:34px;
-    line-height:1.08;
-    letter-spacing:-1px;
-    font-weight:600;
-    max-width:650px;
+.bottom button{
+border:0;
+background:none;
+color:#817578;
+font-size:8px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:4px
 }
+.bottom button:first-child{color:var(--red)}
+.bottom b{font-size:17px}
 
-.intro-text{
-    margin-top:20px;
-    max-width:600px;
-    color:#666;
-    font-size:14px;
-    line-height:1.75;
+/* DESKTOP */
+@media(min-width:700px){
+body{padding-bottom:0}
+.menu{display:none}
+.head{height:75px;padding:0 40px}
+.logo{
+position:static;
+transform:none
 }
-
-/* ================= RESPONSIVE ================= */
-
-@media(min-width:768px){
-
-    .header{
-        height:78px;
-    }
-
-    .header-inner{
-        padding:0 45px;
-    }
-
-    .mobile-menu,
-    .menu-btn{
-        display:none;
-    }
-
-    .desktop-nav{
-        display:flex;
-        align-items:center;
-    }
-
-    .hero{
-        margin-top:78px;
-    }
-
-    .hero-content{
-        padding:0 7%;
-        bottom:80px;
-    }
-
-    .intro{
-        padding:110px 7%;
-    }
-
-    .intro-title{
-        font-size:52px;
-    }
-
-    .hero-title{
-        font-size:78px;
-    }
-
-    .hero-text{
-        font-size:15px;
-    }
-
-    .scroll-indicator{
-        right:45px;
-        bottom:65px;
-    }
+.logo b{font-size:25px}
+.nav{
+height:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:28px;
+border-top:1px solid var(--border)
 }
-
-@media(max-width:380px){
-
-    .logo{
-        font-size:21px;
-    }
-
-    .header-inner{
-        padding:0 14px;
-    }
-
-    .header-actions{
-        gap:5px;
-    }
-
-    .icon-btn,
-    .menu-btn{
-        width:35px;
-        height:35px;
-    }
-
-    .hero-content{
-        bottom:42px;
-        padding:0 18px;
-    }
-
-    .hero-title{
-        font-size:40px;
-    }
+.nav a{
+font-size:10px;
+font-weight:bold
+}
+.search{display:none}
+.hero{height:650px}
+.heroText{left:9%;bottom:100px}
+.hero h1{font-size:60px;max-width:600px}
+.hero p{font-size:14px;max-width:470px}
+.trust{grid-template-columns:repeat(4,1fr)}
+.trust div{border-bottom:0}
+.trust div:nth-child(even){border-right:1px solid var(--border)}
+.trust div:last-child{border-right:0}
+.section{padding:75px 8%}
+.cats{justify-content:center;overflow:visible}
+.cat{min-width:160px;height:210px}
+.grid{grid-template-columns:repeat(4,1fr);gap:18px}
+.banner{margin:0 8% 30px;height:350px}
+.bannerText{left:7%}
+.bannerText h2{font-size:42px}
+.bottom{display:none}
+}
+@media(max-width:360px){
+.logo b{font-size:18px}
+.hero{height:535px}
+.hero h1{font-size:35px}
+.section{padding-top:38px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<div class="top">
+FREE DELIVERY ON SELECT ORDERS • PREMIUM FURNITURE COLLECTION
+</div>
 
-<header class="header">
+<header>
+<div class="head">
 
-    <div class="header-inner">
+<button class="menu" onclick="openMenu()">
+<i></i><i></i><i></i>
+</button>
 
-        <a href="#" class="logo">
-            BED<span>ORA</span>
-        </a>
+<a class="logo" href="#">
+<b>ANUJ HOMES</b>
+<small>FURNITURE • DECOR • LIVING</small>
+</a>
 
-        <nav class="desktop-nav">
-            <a href="#beds">Beds</a>
-            <a href="#storage">Storage Beds</a>
-            <a href="#bedroom">Bedroom</a>
-            <a href="#bestsellers">Best Sellers</a>
-            <a href="#about">About</a>
-        </nav>
-
-        <div class="header-actions">
-
-            <button class="icon-btn" onclick="openSearch()" aria-label="Search">
-                ⌕
-            </button>
-
-            <button class="icon-btn cart-btn" onclick="openCart()" aria-label="Cart">
-                🛒
-                <span class="cart-count" id="cartCount">0</span>
-            </button>
-
-            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- ================= MOBILE MENU ================= -->
-
-<div class="mobile-menu" id="mobileMenu">
-
-    <div class="mobile-menu-title">
-        SHOP BEDORA
-    </div>
-
-    <a href="#beds" class="mobile-link" onclick="closeMenu()">
-        Beds
-        <span>→</span>
-    </a>
-
-    <a href="#storage" class="mobile-link" onclick="closeMenu()">
-        Storage Beds
-        <span>→</span>
-    </a>
-
-    <a href="#bedroom" class="mobile-link" onclick="closeMenu()">
-        Bedroom Furniture
-        <span>→</span>
-    </a>
-
-    <a href="#bestsellers" class="mobile-link" onclick="closeMenu()">
-        Best Sellers
-        <span>→</span>
-    </a>
-
-    <a href="#about" class="mobile-link" onclick="closeMenu()">
-        About BEDORA
-        <span>→</span>
-    </a>
+<div class="actions">
+<button class="icon" onclick="searchFocus()">⌕</button>
+<button class="icon" onclick="cartOpen()">♡<span class="count" id="count">0</span></button>
+</div>
 
 </div>
 
+<nav class="nav">
+<a href="#home">HOME</a>
+<a href="#categories">CATEGORIES</a>
+<a href="#beds">BEDS</a>
+<a href="#wardrobes">WARDROBES</a>
+<a href="#sofas">SOFAS</a>
+<a href="#dining">DINING</a>
+<a href="#decor">DECOR</a>
+</nav>
 
-<!-- ================= HERO ================= -->
+<div class="search">
+<div class="searchbox">
+<span>⌕</span>
+<input id="search" placeholder="Search beds, sofas, wardrobes...">
+</div>
+</div>
+</header>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<aside class="drawer" id="drawer">
+<div class="drawertop">
+<div>
+<b>ANUJ HOMES</b>
+<small>FURNITURE & HOME DECOR</small>
+</div>
+<button class="close" onclick="closeMenu()">×</button>
+</div>
+
+<div class="links">
+<a href="#home" onclick="closeMenu()">Home <span>›</span></a>
+<a href="#categories" onclick="closeMenu()">Categories <span>›</span></a>
+<a href="#beds" onclick="closeMenu()">Beds & Modular Beds <span>›</span></a>
+<a href="#wardrobes" onclick="closeMenu()">Wardrobes <span>›</span></a>
+<a href="#sofas" onclick="closeMenu()">Sofas <span>›</span></a>
+<a href="#dining" onclick="closeMenu()">Dining <span>›</span></a>
+<a href="#decor" onclick="closeMenu()">Home Decor <span>›</span></a>
+<a href="#offers" onclick="closeMenu()">Offers <span>›</span></a>
+</div>
+</aside>
+
+<!-- HERO -->
 
 <section class="hero" id="home">
 
-    <!-- FALLBACK BED VISUAL -->
+<video
+id="heroVideo"
+autoplay
+muted
+loop
+playsinline
+webkit-playsinline
+preload="auto"
+>
+<source src="https://cdn.coverr.co/videos/coverr-a-modern-living-room-1576/1080p.mp4" type="video/mp4">
+</video>
 
-    <div class="video-fallback">
-        <div class="fallback-bed"></div>
-    </div>
+<div class="cover"></div>
 
-    <!--
-    VIDEO
-    Replace the video URL later with your own MP4.
-    Muted + autoplay + loop is used for mobile compatibility.
-    -->
+<div class="heroText">
 
-    <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        poster=""
-        id="heroVideo">
+<div class="tag">PREMIUM FURNITURE COLLECTION</div>
 
-        <source
-            src="https://cdn.coverr.co/videos/coverr-a-bed-in-a-bedroom-1572/1080p.mp4"
-            type="video/mp4">
+<h1>
+Beautiful Furniture
+for <span>Beautiful Homes.</span>
+</h1>
 
-    </video>
+<p>
+Discover premium beds, modular furniture, wardrobes,
+sofas and elegant home decor for modern living.
+</p>
 
-    <div class="hero-overlay"></div>
+<div class="buttons">
+<button class="btn1" onclick="go('categories')">
+SHOP COLLECTION
+</button>
+<button class="btn2" onclick="go('beds')">
+EXPLORE BEDS
+</button>
+</div>
 
-    <div class="hero-content">
+</div>
+</section>
 
-        <div class="hero-small">
-            BEDORA HOME
-        </div>
+<!-- TRUST -->
 
-        <h1 class="hero-title">
-            Sleep<br>
-            Beautifully.
-        </h1>
+<section class="trust">
 
-        <p class="hero-text">
-            Premium beds designed to bring comfort,
-            character and timeless style into your bedroom.
-        </p>
+<div>
+<span class="ticon">✓</span>
+<p><strong>Premium Quality</strong><small>Built for everyday living</small></p>
+</div>
 
-        <div class="hero-buttons">
+<div>
+<span class="ticon">⌂</span>
+<p><strong>Home Delivery</strong><small>Safe & convenient</small></p>
+</div>
 
-            <button
-                class="hero-btn primary"
-                onclick="document.getElementById('beds').scrollIntoView()">
-                SHOP BEDS
-            </button>
+<div>
+<span class="ticon">★</span>
+<p><strong>Modern Design</strong><small>Elegant collections</small></p>
+</div>
 
-            <button
-                class="hero-btn secondary"
-                onclick="document.getElementById('bestsellers').scrollIntoView()">
-                EXPLORE COLLECTION
-            </button>
-
-        </div>
-
-    </div>
-
-    <div class="scroll-indicator">
-        SCROLL
-        <div class="scroll-line"></div>
-    </div>
+<div>
+<span class="ticon">↗</span>
+<p><strong>Easy Enquiry</strong><small>Quick assistance</small></p>
+</div>
 
 </section>
 
+<!-- CATEGORIES -->
 
-<!-- ================= INTRO ================= -->
+<section class="section" id="categories">
 
-<section class="intro">
+<div class="sectionhead">
+<div>
+<div class="kicker">SHOP BY CATEGORY</div>
+<h2 class="title">Find Your Style</h2>
+<p class="desc">
+Furniture designed to bring comfort and elegance into every room.
+</p>
+</div>
+<a class="view" href="#products">VIEW ALL</a>
+</div>
 
-    <div class="intro-inner">
+<div class="cats">
 
-        <div class="eyebrow">
-            THE BEDORA COLLECTION
-        </div>
+<a class="cat" href="#beds">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80">
+<b>Beds</b>
+<small>24 Products</small>
+</a>
 
-        <h2 class="intro-title">
-            Furniture that makes your bedroom feel like home.
-        </h2>
+<a class="cat" href="#beds">
+<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80">
+<b>Modular Beds</b>
+<small>18 Products</small>
+</a>
 
-        <p class="intro-text">
-            Discover thoughtfully designed beds and bedroom furniture
-            made for modern living. Clean silhouettes, practical storage
-            and comfortable finishes come together in every BEDORA piece.
-        </p>
+<a class="cat" href="#wardrobes">
+<img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80">
+<b>Wardrobes</b>
+<small>16 Products</small>
+</a>
 
-    </div>
+<a class="cat" href="#sofas">
+<img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80">
+<b>Sofas</b>
+<small>31 Products</small>
+</a>
+
+<a class="cat" href="#dining">
+<img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80">
+<b>Dining</b>
+<small>19 Products</small>
+</a>
+
+<a class="cat" href="#decor">
+<img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80">
+<b>Home Decor</b>
+<small>42 Products</small>
+</a>
+
+</div>
+</section>
+
+<!-- FEATURE -->
+
+<div class="banner" id="offers">
+
+<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80">
+
+<div class="bannerText">
+<small>BEDROOM COLLECTION</small>
+<h2>Designed For Better Living.</h2>
+<p>
+Create a calm and beautiful bedroom with premium furniture.
+</p>
+<button onclick="go('beds')">EXPLORE COLLECTION</button>
+</div>
+
+</div>
+
+<!-- INTRO -->
+
+<section class="intro" id="beds">
+<div class="kicker">ANUJ HOMES COLLECTION</div>
+<h2>Signature Bedroom</h2>
+<p>
+From elegant statement beds to smart modular storage,
+create a bedroom that feels completely yours.
+</p>
+</section>
+
+<!-- PRODUCTS START -->
+
+<section class="section" id="products">
+
+<div class="sectionhead">
+<div>
+<div class="kicker">BESTSELLERS</div>
+<h2 class="title">Popular Furniture</h2>
+</div>
+<a class="view" href="#products">VIEW ALL</a>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="pic">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80">
+<span class="badge">BESTSELLER</span>
+<button class="heart">♡</button>
+</div>
+<div class="info">
+<small>BEDROOM</small>
+<h3>Luxury Wooden Bed</h3>
+<span class="price">₹24,999</span>
+<span class="old">₹31,999</span>
+<button class="add" onclick="addCart()">ADD TO CART</button>
+</div>
+</div>
+
+<div class="card">
+<div class="pic">
+<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=80">
+<span class="badge">NEW</span>
+<button class="heart">♡</button>
+</div>
+<div class="info">
+<small>BEDROOM</small>
+<h3>Modern Modular Bed</h3>
+<span class="price">₹32,499</span>
+<span class="old">₹39,999</span>
+<button class="add" onclick="addCart()">ADD TO CART</button>
+</div>
+</div>
+
+</div>
 
 </section>
 
+<!-- PART 2 WILL CONTINUE HERE -->
 
-<!-- ================= BASIC JS ================= -->
+<div style="height:20px"></div>
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom">
+
+<button onclick="go('home')">
+<b>⌂</b>Home
+</button>
+
+<button onclick="go('categories')">
+<b>⌑</b>Shop
+</button>
+
+<button onclick="go('beds')">
+<b>♡</b>Wishlist
+</button>
+
+<button onclick="cartOpen()">
+<b>🛒</b>Cart
+</button>
+
+</nav>
 
 <script>
 
-let cartItems = 0;
+const drawer=document.getElementById("drawer");
+const overlay=document.getElementById("overlay");
 
-function toggleMenu(){
-
-    const menu = document.getElementById("mobileMenu");
-
-    menu.classList.toggle("active");
-
+function openMenu(){
+drawer.classList.add("open");
+overlay.classList.add("open");
+document.body.style.overflow="hidden";
 }
 
 function closeMenu(){
-
-    document
-        .getElementById("mobileMenu")
-        .classList.remove("active");
-
+drawer.classList.remove("open");
+overlay.classList.remove("open");
+document.body.style.overflow="";
 }
 
-function openCart(){
-
-    alert("Your cart is empty. Products will be added in the next section.");
-
-}
-
-function openSearch(){
-
-    const query = prompt("What are you looking for?");
-
-    if(query){
-
-        alert("Searching for: " + query);
-
-    }
-
-}
-
-
-/* VIDEO AUTOPLAY FIX */
-
-document.addEventListener("DOMContentLoaded",function(){
-
-    const video = document.getElementById("heroVideo");
-
-    if(video){
-
-        video.muted = true;
-
-        const playVideo = () => {
-
-            video.play().catch(() => {
-                console.log("Autoplay waiting for browser permission.");
-            });
-
-        };
-
-        playVideo();
-
-        document.addEventListener("touchstart",playVideo,{once:true});
-
-    }
-
+function go(id){
+document.getElementById(id)?.scrollIntoView({
+behavior:"smooth"
 });
+}
 
+function searchFocus(){
+const s=document.getElementById("search");
+if(s){
+s.focus();
+window.scrollTo({top:0,behavior:"smooth"});
+}
+}
 
-/* HEADER SHADOW */
+let total=0;
 
-window.addEventListener("scroll",function(){
+function addCart(){
+total++;
+document.getElementById("count").innerText=total;
+}
 
-    const header = document.querySelector(".header");
+function cartOpen(){
+alert("ANUJ HOMES Cart — Part 2 में complete cart drawer आएगा.");
+}
 
-    if(window.scrollY > 20){
+/* FORCE VIDEO */
 
-        header.style.boxShadow =
-            "0 5px 25px rgba(0,0,0,.08)";
+const video=document.getElementById("heroVideo");
 
-    }else{
+function playVideo(){
+if(!video)return;
 
-        header.style.boxShadow = "none";
+video.muted=true;
+video.loop=true;
+video.playsInline=true;
 
-    }
+let p=video.play();
 
-});
+if(p){
+p.catch(()=>{});
+}
+}
+
+window.addEventListener("load",playVideo);
+
+document.addEventListener("touchstart",playVideo,{once:true});
+document.addEventListener("click",playVideo,{once:true});
 
 </script>
-<!-- ================= PART 2 : BED COLLECTION ================= -->
 
-<style>
-
-/* COLLECTION AREA */
-
-.collection{
-    padding:70px 18px 80px;
-    background:#f8f7f5;
-}
-
-.collection-head{
-    max-width:1200px;
-    margin:0 auto 30px;
-}
-
-.collection-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:20px;
-}
-
-.collection-label{
-    font-size:10px;
-    letter-spacing:2.5px;
-    text-transform:uppercase;
-    color:#777;
-    margin-bottom:12px;
-}
-
-.collection-title{
-    font-size:34px;
-    line-height:1.05;
-    letter-spacing:-1.2px;
-    font-weight:600;
-}
-
-.view-all{
-    font-size:11px;
-    font-weight:700;
-    border-bottom:1px solid #111;
-    padding-bottom:5px;
-    white-space:nowrap;
-}
-
-/* CATEGORY FILTER */
-
-.category-scroll{
-    display:flex;
-    gap:9px;
-    overflow-x:auto;
-    padding:5px 0 18px;
-    scrollbar-width:none;
-}
-
-.category-scroll::-webkit-scrollbar{
-    display:none;
-}
-
-.category-btn{
-    border:1px solid #ddd;
-    background:#fff;
-    padding:11px 17px;
-    border-radius:30px;
-    font-size:11px;
-    white-space:nowrap;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.category-btn.active,
-.category-btn:hover{
-    background:#111;
-    color:#fff;
-    border-color:#111;
-}
-
-/* PRODUCT GRID */
-
-.product-grid{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-}
-
-/* PRODUCT CARD */
-
-.product-card{
-    background:#fff;
-    position:relative;
-    overflow:hidden;
-    border-radius:3px;
-    transition:.3s;
-}
-
-.product-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
-}
-
-.product-image{
-    position:relative;
-    width:100%;
-    aspect-ratio:1/1.08;
-    overflow:hidden;
-    background:#eee;
-}
-
-.product-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:.6s;
-}
-
-.product-card:hover .product-image img{
-    transform:scale(1.05);
-}
-
-/* BADGES */
-
-.sale-badge{
-    position:absolute;
-    top:10px;
-    left:10px;
-    background:#111;
-    color:#fff;
-    padding:6px 9px;
-    font-size:8px;
-    font-weight:700;
-    letter-spacing:.5px;
-    z-index:2;
-}
-
-.wish-btn{
-    position:absolute;
-    top:10px;
-    right:10px;
-    width:32px;
-    height:32px;
-    border:0;
-    border-radius:50%;
-    background:rgba(255,255,255,.92);
-    cursor:pointer;
-    z-index:3;
-    font-size:16px;
-    transition:.25s;
-}
-
-.wish-btn.active{
-    background:#111;
-    color:#fff;
-}
-
-/* QUICK VIEW */
-
-.quick-btn{
-    position:absolute;
-    left:10px;
-    right:10px;
-    bottom:10px;
-    height:39px;
-    border:0;
-    background:rgba(255,255,255,.95);
-    backdrop-filter:blur(8px);
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:.8px;
-    cursor:pointer;
-    transform:translateY(60px);
-    opacity:0;
-    transition:.3s;
-}
-
-.product-card:hover .quick-btn{
-    transform:translateY(0);
-    opacity:1;
-}
-
-/* PRODUCT INFO */
-
-.product-info{
-    padding:15px 12px 18px;
-}
-
-.product-category{
-    font-size:9px;
-    color:#888;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin-bottom:7px;
-}
-
-.product-name{
-    font-size:14px;
-    font-weight:600;
-    line-height:1.3;
-    min-height:36px;
-}
-
-.rating{
-    margin-top:7px;
-    font-size:10px;
-    color:#555;
-}
-
-.price-row{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-top:10px;
-}
-
-.current-price{
-    font-size:14px;
-    font-weight:700;
-}
-
-.old-price{
-    font-size:11px;
-    color:#999;
-    text-decoration:line-through;
-}
-
-.discount{
-    font-size:9px;
-    color:#1c6b42;
-    font-weight:700;
-}
-
-/* ADD BUTTON */
-
-.add-btn{
-    width:100%;
-    margin-top:13px;
-    height:38px;
-    border:1px solid #111;
-    background:#111;
-    color:#fff;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:.6px;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.add-btn:hover{
-    background:#fff;
-    color:#111;
-}
-
-/* ================= QUICK VIEW MODAL ================= */
-
-.quick-modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.6);
-    backdrop-filter:blur(8px);
-    z-index:10000;
-    display:none;
-    align-items:flex-end;
-    justify-content:center;
-}
-
-.quick-modal.active{
-    display:flex;
-}
-
-.quick-box{
-    width:100%;
-    max-width:650px;
-    background:#fff;
-    max-height:92vh;
-    overflow-y:auto;
-    border-radius:20px 20px 0 0;
-    animation:modalUp .35s ease;
-}
-
-@keyframes modalUp{
-    from{
-        transform:translateY(100%);
-    }
-    to{
-        transform:translateY(0);
-    }
-}
-
-.modal-image{
-    width:100%;
-    height:310px;
-    object-fit:cover;
-}
-
-.modal-content{
-    padding:23px;
-}
-
-.modal-close{
-    position:absolute;
-    right:18px;
-    top:18px;
-    width:35px;
-    height:35px;
-    border:0;
-    border-radius:50%;
-    background:#fff;
-    font-size:18px;
-    cursor:pointer;
-}
-
-.modal-tag{
-    color:#888;
-    font-size:9px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.modal-title{
-    font-size:26px;
-    margin-top:9px;
-}
-
-.modal-price{
-    font-size:20px;
-    font-weight:700;
-    margin-top:13px;
-}
-
-.modal-desc{
-    color:#666;
-    font-size:13px;
-    line-height:1.7;
-    margin-top:15px;
-}
-
-.modal-add{
-    width:100%;
-    height:48px;
-    margin-top:22px;
-    border:0;
-    background:#111;
-    color:#fff;
-    font-weight:700;
-    cursor:pointer;
-}
-
-/* TOAST */
-
-.toast{
-    position:fixed;
-    left:50%;
-    bottom:22px;
-    transform:translate(-50%,120px);
-    background:#111;
-    color:#fff;
-    padding:13px 20px;
-    border-radius:30px;
-    font-size:11px;
-    z-index:20000;
-    opacity:0;
-    transition:.35s;
-    white-space:nowrap;
-}
-
-.toast.show{
-    transform:translate(-50%,0);
-    opacity:1;
-}
-
-/* DESKTOP */
-
-@media(min-width:768px){
-
-    .collection{
-        padding:100px 45px;
-    }
-
-    .collection-title{
-        font-size:48px;
-    }
-
-    .product-grid{
-        grid-template-columns:repeat(4,1fr);
-        gap:18px;
-    }
-
-    .quick-box{
-        border-radius:12px;
-        margin-bottom:30px;
-    }
-
-    .quick-modal{
-        align-items:center;
-    }
-
-    .modal-image{
-        height:360px;
-    }
-
-}
-
-@media(max-width:380px){
-
-    .collection{
-        padding-left:13px;
-        padding-right:13px;
-    }
-
-    .product-grid{
-        gap:9px;
-    }
-
-    .product-info{
-        padding:12px 9px 15px;
-    }
-
-    .product-name{
-        font-size:12px;
-    }
-
-    .current-price{
-        font-size:12px;
-    }
-
-}
-
-</style>
-
-
-<!-- ================= COLLECTION ================= -->
-
-<section class="collection" id="beds">
-
-    <div class="collection-head">
-
-        <div class="collection-top">
-
-            <div>
-                <div class="collection-label">
-                    SHOP OUR COLLECTION
-                </div>
-
-                <h2 class="collection-title">
-                    Made for<br>better bedrooms.
-                </h2>
-            </div>
-
-            <a href="#beds" class="view-all">
-                VIEW ALL
-            </a>
-
-        </div>
-
-        <!-- CATEGORY BUTTONS -->
-
-        <div class="category-scroll">
-
-            <button
-                class="category-btn active"
-                onclick="filterProducts('all',this)">
-                All Beds
-            </button>
-
-            <button
-                class="category-btn"
-                onclick="filterProducts('king',this)">
-                King Size
-            </button>
-
-            <button
-                class="category-btn"
-                onclick="filterProducts('queen',this)">
-                Queen Size
-            </button>
-
-            <button
-                class="category-btn"
-                onclick="filterProducts('storage',this)">
-                Storage Beds
-            </button>
-
-            <button
-                class="category-btn"
-                onclick="filterProducts('wood',this)">
-                Wooden Beds
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= PRODUCTS ================= -->
-
-    <div class="product-grid" id="productGrid">
-
-
-        <!-- PRODUCT 1 -->
-
-        <article
-            class="product-card"
-            data-category="king storage">
-
-            <div class="product-image">
-
-                <span class="sale-badge">
-                    BESTSELLER
-                </span>
-
-                <button
-                    class="wish-btn"
-                    onclick="toggleWishlist(this)">
-                    ♡
-                </button>
-
-                <img
-                    src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=85"
-                    alt="Modern King Storage Bed">
-
-                <button
-                    class="quick-btn"
-                    onclick="quickView(
-                    'Aero King Storage Bed',
-                    '₹24,999',
-                    'King Size • Hydraulic Storage',
-                    'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=90'
-                    )">
-                    QUICK VIEW
-                </button>
-
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    King • Storage
-                </div>
-
-                <h3 class="product-name">
-                    Aero King Storage Bed
-                </h3>
-
-                <div class="rating">
-                    ★★★★★ &nbsp; 4.8
-                </div>
-
-                <div class="price-row">
-
-                    <span class="current-price">
-                        ₹24,999
-                    </span>
-
-                    <span class="old-price">
-                        ₹31,999
-                    </span>
-
-                    <span class="discount">
-                        22% OFF
-                    </span>
-
-                </div>
-
-                <button
-                    class="add-btn"
-                    onclick="addProduct('Aero King Storage Bed',24999)">
-                    ADD TO CART
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- PRODUCT 2 -->
-
-        <article
-            class="product-card"
-            data-category="queen wood">
-
-            <div class="product-image">
-
-                <span class="sale-badge">
-                    NEW
-                </span>
-
-                <button
-                    class="wish-btn"
-                    onclick="toggleWishlist(this)">
-                    ♡
-                </button>
-
-                <img
-                    src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80"
-                    alt="Luna Queen Bed">
-
-                <button
-                    class="quick-btn"
-                    onclick="quickView(
-                    'Luna Queen Bed',
-                    '₹18,499',
-                    'Queen Size • Solid Wood',
-                    'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=90'
-                    )">
-                    QUICK VIEW
-                </button>
-
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    Queen • Wooden
-                </div>
-
-                <h3 class="product-name">
-                    Luna Queen Bed
-                </h3>
-
-                <div class="rating">
-                    ★★★★★ &nbsp; 4.7
-                </div>
-
-                <div class="price-row">
-
-                    <span class="current-price">
-                        ₹18,499
-                    </span>
-
-                    <span class="old-price">
-                        ₹23,999
-                    </span>
-
-                    <span class="discount">
-                        23% OFF
-                    </span>
-
-                </div>
-
-                <button
-                    class="add-btn"
-                    onclick="addProduct('Luna Queen Bed',18499)">
-                    ADD TO CART
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- PRODUCT 3 -->
-
-        <article
-            class="product-card"
-            data-category="king wood">
-
-            <div class="product-image">
-
-                <button
-                    class="wish-btn"
-                    onclick="toggleWishlist(this)">
-                    ♡
-                </button>
-
-                <img
-                    src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=900&q=85"
-                    alt="Nora Premium Wooden Bed">
-
-                <button
-                    class="quick-btn"
-                    onclick="quickView(
-                    'Nora Premium Bed',
-                    '₹21,990',
-                    'King Size • Premium Wood',
-                    'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1000&q=90'
-                    )">
-                    QUICK VIEW
-                </button>
-
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    King • Wooden
-                </div>
-
-                <h3 class="product-name">
-                    Nora Premium Bed
-                </h3>
-
-                <div class="rating">
-                    ★★★★★ &nbsp; 4.9
-                </div>
-
-                <div class="price-row">
-
-                    <span class="current-price">
-                        ₹21,990
-                    </span>
-
-                    <span class="old-price">
-                        ₹27,500
-                    </span>
-
-                    <span class="discount">
-                        20% OFF
-                    </span>
-
-                </div>
-
-                <button
-                    class="add-btn"
-                    onclick="addProduct('Nora Premium Bed',21990)">
-                    ADD TO CART
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- PRODUCT 4 -->
-
-        <article
-            class="product-card"
-            data-category="queen storage">
-
-            <div class="product-image">
-
-                <span class="sale-badge">
-                    SALE
-                </span>
-
-                <button
-                    class="wish-btn"
-                    onclick="toggleWishlist(this)">
-                    ♡
-                </button>
-
-                <img
-                    src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=75"
-                    alt="Cloud Queen Storage Bed">
-
-                <button
-                    class="quick-btn"
-                    onclick="quickView(
-                    'Cloud Queen Storage Bed',
-                    '₹16,999',
-                    'Queen Size • Box Storage',
-                    'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80'
-                    )">
-                    QUICK VIEW
-                </button>
-
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-category">
-                    Queen • Storage
-                </div>
-
-                <h3 class="product-name">
-                    Cloud Queen Storage Bed
-                </h3>
-
-                <div class="rating">
-                    ★★★★☆ &nbsp; 4.6
-                </div>
-
-                <div class="price-row">
-
-                    <span class="current-price">
-                        ₹16,999
-                    </span>
-
-                    <span class="old-price">
-                        ₹21,999
-                    </span>
-
-                    <span class="discount">
-                        23% OFF
-                    </span>
-
-                </div>
-
-                <button
-                    class="add-btn"
-                    onclick="addProduct('Cloud Queen Storage Bed',16999)">
-                    ADD TO CART
-                </button>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- ================= QUICK VIEW MODAL ================= -->
-
-<div
-    class="quick-modal"
-    id="quickModal"
-    onclick="closeQuickOutside(event)">
-
-    <div class="quick-box">
-
-        <button
-            class="modal-close"
-            onclick="closeQuickView()">
-            ×
-        </button>
-
-        <img
-            class="modal-image"
-            id="modalImage"
-            src=""
-            alt="Product">
-
-        <div class="modal-content">
-
-            <div
-                class="modal-tag"
-                id="modalTag">
-                Premium Bed
-            </div>
-
-            <h2
-                class="modal-title"
-                id="modalTitle">
-                Product
-            </h2>
-
-            <div
-                class="modal-price"
-                id="modalPrice">
-                ₹0
-            </div>
-
-            <p class="modal-desc">
-                Designed with comfort, durability and
-                modern bedroom styling in mind. Premium
-                finish with practical functionality for
-                everyday living.
-            </p>
-
-            <button
-                class="modal-add"
-                onclick="addModalProduct()">
-                ADD TO CART
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ================= TOAST ================= -->
-
-<div
-    class="toast"
-    id="toast">
-    Added to cart
-</div>
-
-
-<script>
-
-/* ================= CART ================= */
-
-let bedCartCount = 0;
-let selectedModalProduct = "";
-
-
-function addProduct(name,price){
-
-    bedCartCount++;
-
-    const counter =
-        document.getElementById("cartCount");
-
-    if(counter){
-        counter.textContent = bedCartCount;
-    }
-
-    showToast(
-        name + " added to cart"
-    );
-
-}
-
-
-/* ================= WISHLIST ================= */
-
-function toggleWishlist(button){
-
-    button.classList.toggle("active");
-
-    if(button.classList.contains("active")){
-
-        button.innerHTML = "♥";
-
-        showToast("Added to wishlist");
-
-    }else{
-
-        button.innerHTML = "♡";
-
-        showToast("Removed from wishlist");
-
-    }
-
-}
-
-
-/* ================= QUICK VIEW ================= */
-
-function quickView(
-    name,
-    price,
-    tag,
-    image
-){
-
-    selectedModalProduct = name;
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent = name;
-
-    document.getElementById(
-        "modalPrice"
-    ).textContent = price;
-
-    document.getElementById(
-        "modalTag"
-    ).textContent = tag;
-
-    document.getElementById(
-        "modalImage"
-    ).src = image;
-
-    document
-        .getElementById("quickModal")
-        .classList.add("active");
-
-    document.body.style.overflow = "hidden";
-
-}
-
-
-function closeQuickView(){
-
-    document
-        .getElementById("quickModal")
-        .classList.remove("active");
-
-    document.body.style.overflow = "";
-
-}
-
-
-function closeQuickOutside(event){
-
-    if(
-        event.target ===
-        document.getElementById("quickModal")
-    ){
-
-        closeQuickView();
-
-    }
-
-}
-
-
-function addModalProduct(){
-
-    bedCartCount++;
-
-    document.getElementById(
-        "cartCount"
-    ).textContent = bedCartCount;
-
-    closeQuickView();
-
-    showToast(
-        selectedModalProduct +
-        " added to cart"
-    );
-
-}
-
-
-/* ================= TOAST ================= */
-
-let toastTimer;
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent = message;
-
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(function(){
-
-        toast.classList.remove("show");
-
-    },2200);
-
-}
-
-
-/* ================= FILTER ================= */
-
-function filterProducts(category,button){
-
-    const cards =
-        document.querySelectorAll(
-            ".product-card"
-        );
-
-    const buttons =
-        document.querySelectorAll(
-            ".category-btn"
-        );
-
-    buttons.forEach(function(btn){
-
-        btn.classList.remove("active");
-
-    });
-
-    button.classList
 </body>
-              </html>
+    </html>
