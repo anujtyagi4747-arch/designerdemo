@@ -2409,5 +2409,148 @@ message+="%0APlease share availability and delivery details.";
 
 window.open(
 "https://wa.me/919582907643?text="+message,
+<!-- ================= ANUJ HOMES VIDEO ================= -->
+
+<style>
+.anuj-video-wrap{
+  position:relative;
+  width:100%;
+  height:58vh;
+  min-height:390px;
+  max-height:650px;
+  overflow:hidden;
+  background:#210b12;
+}
+
+.anuj-video-wrap iframe{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:100vw;
+  height:56.25vw;
+  min-height:100%;
+  min-width:177.78vh;
+  transform:translate(-50%,-50%);
+  border:0;
+  pointer-events:none;
+}
+
+.anuj-video-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(30,5,12,.15),
+    rgba(30,5,12,.45)
+  );
+  z-index:2;
+  pointer-events:none;
+}
+
+.anuj-video-content{
+  position:absolute;
+  z-index:3;
+  left:22px;
+  right:22px;
+  bottom:28px;
+  color:#fff;
+}
+
+.anuj-video-content small{
+  display:inline-block;
+  background:#681f32;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:11px;
+  letter-spacing:1px;
+  margin-bottom:10px;
+}
+
+.anuj-video-content h2{
+  margin:0 0 7px;
+  font-size:29px;
+  line-height:1.05;
+  font-weight:800;
+}
+
+.anuj-video-content p{
+  margin:0;
+  font-size:13px;
+  opacity:.9;
+}
+
+@media(max-width:600px){
+  .anuj-video-wrap{
+    height:72vh;
+    min-height:470px;
+  }
+
+  .anuj-video-wrap iframe{
+    height:100%;
+    width:177.78vh;
+    min-width:100%;
+    min-height:100%;
+  }
+
+  .anuj-video-content h2{
+    font-size:27px;
+  }
+}
+</style>
+
+<section class="anuj-video-wrap">
+
+  <iframe
+    src="https://www.youtube.com/embed/dbpHd_u1J-A?autoplay=1&mute=1&loop=1&playlist=dbpHd_u1J-A&playsinline=1&controls=0&rel=0&modestbranding=1"
+    title="ANUJ HOMES Furniture Video"
+    allow="autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+  <div class="anuj-video-overlay"></div>
+
+  <div class="anuj-video-content">
+    <small>ANUJ HOMES</small>
+    <h2>Modern Furniture<br>For Modern Homes</h2>
+    <p>Premium Beds • Modular Furniture • Home Interiors</p>
+  </div>
+
+</section>
+
+<script>
+(function(){
+
+  function reloadVideo(){
+    const frame=document.querySelector(
+      '.anuj-video-wrap iframe'
+    );
+
+    if(!frame) return;
+
+    const original=frame.src;
+
+    frame.src=original;
+
+    setTimeout(function(){
+      frame.src=original;
+    },1000);
+  }
+
+  window.addEventListener('load',function(){
+    setTimeout(reloadVideo,500);
+  });
+
+  document.addEventListener(
+    'touchstart',
+    function(){
+      reloadVideo();
+    },
+    {once:true}
+  );
+
+})();
+</script>
+
+<!-- ================= END ANUJ HOMES VIDEO ================= -->
 </body>
     </html>
