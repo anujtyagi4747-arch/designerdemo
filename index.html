@@ -1003,6 +1003,1411 @@ document.addEventListener("touchstart",playVideo,{once:true});
 document.addEventListener("click",playVideo,{once:true});
 
 </script>
+<!-- =========================
+     PART 2 : PRODUCTS + SHOP
+========================= -->
 
+<style>
+
+/* PRODUCT SECTION */
+.shop-area{
+padding:35px 14px 45px;
+background:#faf7f4
+}
+
+.shop-top{
+display:flex;
+justify-content:space-between;
+align-items:end;
+margin-bottom:18px
+}
+
+.shop-top h2{
+font-family:Georgia,serif;
+font-size:27px;
+color:#351c23
+}
+
+.shop-top p{
+font-size:9px;
+color:#8b7c80;
+margin-top:5px
+}
+
+.filters{
+display:flex;
+gap:7px;
+overflow-x:auto;
+scrollbar-width:none;
+margin-bottom:18px
+}
+
+.filters::-webkit-scrollbar{
+display:none
+}
+
+.filter{
+white-space:nowrap;
+border:1px solid #e4d8da;
+background:#fff;
+color:#5e4b50;
+padding:9px 13px;
+border-radius:30px;
+font-size:9px;
+font-weight:bold
+}
+
+.filter.active{
+background:#681f32;
+border-color:#681f32;
+color:white
+}
+
+.products{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:11px
+}
+
+.pcard{
+background:white;
+border:1px solid #eee4e5;
+border-radius:6px;
+overflow:hidden;
+position:relative
+}
+
+.pimg{
+height:185px;
+position:relative;
+background:#eee5e2;
+overflow:hidden
+}
+
+.pimg img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.4s
+}
+
+.pcard:active .pimg img{
+transform:scale(1.04)
+}
+
+.pbadge{
+position:absolute;
+top:8px;
+left:8px;
+background:#681f32;
+color:#fff;
+font-size:6px;
+padding:5px 7px;
+font-weight:bold;
+letter-spacing:.4px;
+z-index:2
+}
+
+.pwish{
+position:absolute;
+top:7px;
+right:7px;
+width:29px;
+height:29px;
+border:0;
+border-radius:50%;
+background:#fffffff2;
+color:#681f32;
+font-size:15px;
+z-index:3
+}
+
+.pinfo{
+padding:10px
+}
+
+.pcat{
+font-size:7px;
+letter-spacing:1px;
+color:#9a8b8e;
+text-transform:uppercase
+}
+
+.pname{
+font-size:11px;
+font-weight:bold;
+line-height:1.35;
+margin:5px 0;
+min-height:30px
+}
+
+.rating{
+font-size:8px;
+color:#c59a59;
+margin-bottom:5px
+}
+
+.prices{
+display:flex;
+align-items:center;
+gap:5px
+}
+
+.now{
+font-size:12px;
+font-weight:bold;
+color:#681f32
+}
+
+.was{
+font-size:8px;
+color:#aaa;
+text-decoration:line-through
+}
+
+.pbtn{
+width:100%;
+height:31px;
+border:0;
+border-radius:3px;
+background:#681f32;
+color:white;
+font-size:8px;
+font-weight:bold;
+margin-top:9px
+}
+
+/* QUICK VIEW */
+.quick{
+position:fixed;
+inset:0;
+background:#15070a99;
+z-index:4000;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+opacity:0;
+visibility:hidden;
+transition:.3s
+}
+
+.quick.open{
+opacity:1;
+visibility:visible
+}
+
+.quickbox{
+width:100%;
+max-width:520px;
+background:#fff;
+border-radius:18px 18px 0 0;
+padding:18px;
+transform:translateY(100%);
+transition:.35s
+}
+
+.quick.open .quickbox{
+transform:translateY(0)
+}
+
+.qclose{
+width:35px;
+height:35px;
+border:0;
+border-radius:50%;
+background:#f5eded;
+color:#681f32;
+float:right;
+font-size:20px
+}
+
+.qimage{
+width:100%;
+height:230px;
+margin-top:5px;
+border-radius:8px;
+overflow:hidden
+}
+
+.qimage img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.qcat{
+font-size:8px;
+color:#9a898d;
+letter-spacing:1px;
+margin-top:14px
+}
+
+.qtitle{
+font-family:Georgia,serif;
+font-size:25px;
+margin-top:5px;
+color:#351c23
+}
+
+.qprice{
+font-size:17px;
+font-weight:bold;
+color:#681f32;
+margin-top:8px
+}
+
+.qdesc{
+font-size:10px;
+line-height:1.7;
+color:#77696d;
+margin-top:10px
+}
+
+.qbuttons{
+display:flex;
+gap:8px;
+margin-top:16px
+}
+
+.qbuttons button{
+height:44px;
+border-radius:4px;
+font-size:9px;
+font-weight:bold
+}
+
+.qcart{
+flex:1;
+background:#681f32;
+border:1px solid #681f32;
+color:#fff
+}
+
+.qbuy{
+flex:1;
+background:#fff;
+border:1px solid #681f32;
+color:#681f32
+}
+
+/* CART */
+.cart{
+position:fixed;
+right:0;
+top:0;
+bottom:0;
+width:92%;
+max-width:400px;
+background:#fff;
+z-index:5000;
+transform:translateX(105%);
+transition:.35s;
+box-shadow:-10px 0 40px #0003
+}
+
+.cart.open{
+transform:translateX(0)
+}
+
+.carthead{
+height:68px;
+background:#681f32;
+color:white;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 18px
+}
+
+.carthead h3{
+font-family:Georgia,serif;
+font-size:22px
+}
+
+.cartclose{
+border:0;
+background:#ffffff22;
+color:white;
+width:35px;
+height:35px;
+border-radius:50%;
+font-size:20px
+}
+
+.cartbody{
+padding:20px;
+height:calc(100vh - 68px);
+overflow-y:auto
+}
+
+.empty{
+text-align:center;
+padding-top:80px;
+color:#8c7d80
+}
+
+.empty .bag{
+font-size:45px;
+color:#681f32;
+margin-bottom:12px
+}
+
+.empty h4{
+font-family:Georgia,serif;
+font-size:21px;
+color:#351c23;
+margin-bottom:6px
+}
+
+.empty p{
+font-size:10px;
+line-height:1.6
+}
+
+.cartitem{
+display:flex;
+gap:10px;
+padding-bottom:15px;
+margin-bottom:15px;
+border-bottom:1px solid #eee5e5
+}
+
+.cartitem img{
+width:78px;
+height:78px;
+object-fit:cover;
+border-radius:5px
+}
+
+.cartitem h4{
+font-size:11px;
+margin-bottom:6px
+}
+
+.cartitem small{
+font-size:9px;
+color:#681f32;
+font-weight:bold
+}
+
+.qty{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:8px
+}
+
+.qty button{
+width:23px;
+height:23px;
+border:1px solid #ddd;
+background:#fff;
+border-radius:3px
+}
+
+.qty span{
+font-size:10px
+}
+
+.carttotal{
+border-top:1px solid #eee;
+padding-top:16px;
+margin-top:20px
+}
+
+.totalrow{
+display:flex;
+justify-content:space-between;
+font-size:13px;
+font-weight:bold
+}
+
+.checkout{
+width:100%;
+height:46px;
+border:0;
+background:#681f32;
+color:#fff;
+border-radius:4px;
+margin-top:14px;
+font-size:10px;
+font-weight:bold
+}
+
+/* COLLECTION */
+.collection{
+padding:45px 14px;
+background:#fff
+}
+
+.collectionhead{
+text-align:center;
+margin-bottom:20px
+}
+
+.collectionhead .kicker{
+margin-bottom:7px
+}
+
+.collectionhead h2{
+font-family:Georgia,serif;
+font-size:28px;
+color:#351c23
+}
+
+.collectionhead p{
+font-size:10px;
+color:#7d7073;
+line-height:1.6;
+margin:8px auto 0;
+max-width:300px
+}
+
+.tiles{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
+.tile{
+height:185px;
+position:relative;
+overflow:hidden;
+border-radius:6px
+}
+
+.tile.big{
+grid-column:span 2;
+height:230px
+}
+
+.tile img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.tile:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(0deg,#280b15c9,transparent 65%)
+}
+
+.tiletext{
+position:absolute;
+z-index:2;
+left:13px;
+bottom:13px;
+color:white
+}
+
+.tiletext small{
+font-size:7px;
+letter-spacing:1px;
+color:#e3bf7e
+}
+
+.tiletext h3{
+font-family:Georgia,serif;
+font-size:20px;
+margin-top:4px
+}
+
+/* OFFER */
+.offer{
+margin:0 14px 45px;
+background:#681f32;
+color:white;
+border-radius:7px;
+padding:28px 20px;
+position:relative;
+overflow:hidden
+}
+
+.offer:after{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+border-radius:50%;
+border:1px solid #ffffff18;
+right:-70px;
+top:-70px
+}
+
+.offer small{
+font-size:7px;
+letter-spacing:2px;
+color:#e1bc7a
+}
+
+.offer h2{
+font-family:Georgia,serif;
+font-size:28px;
+line-height:1.1;
+margin:7px 0
+}
+
+.offer p{
+font-size:9px;
+line-height:1.6;
+color:#fffC;
+max-width:260px
+}
+
+.offer button{
+margin-top:14px;
+background:#fff;
+color:#681f32;
+border:0;
+padding:10px 15px;
+border-radius:3px;
+font-size:8px;
+font-weight:bold
+}
+
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+right:14px;
+bottom:74px;
+width:48px;
+height:48px;
+border-radius:50%;
+background:#1fa463;
+color:white;
+z-index:1800;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+box-shadow:0 7px 25px #0003
+}
+
+/* DESKTOP */
+@media(min-width:700px){
+
+.shop-area{
+padding:65px 8%
+}
+
+.products{
+grid-template-columns:repeat(4,1fr);
+gap:18px
+}
+
+.pimg{
+height:250px
+}
+
+.collection{
+padding:70px 8%
+}
+
+.tiles{
+grid-template-columns:repeat(3,1fr)
+}
+
+.tile.big{
+grid-column:span 2;
+height:310px
+}
+
+.tile{
+height:310px
+}
+
+.offer{
+margin:0 8% 70px;
+padding:45px
+}
+
+.offer h2{
+font-size:40px
+}
+
+.quick{
+align-items:center
+}
+
+.quickbox{
+border-radius:12px;
+margin:20px
+}
+
+}
+
+/* SMALL PHONES */
+@media(max-width:360px){
+
+.pimg{
+height:165px
+}
+
+.shop-area{
+padding-left:11px;
+padding-right:11px
+}
+
+.pname{
+font-size:10px
+}
+
+.tile{
+height:165px
+}
+
+.tile.big{
+height:205px
+}
+
+}
+
+</style>
+
+<!-- =========================
+     SHOP PRODUCTS
+========================= -->
+
+<section class="shop-area" id="wardrobes">
+
+<div class="shop-top">
+<div>
+<div class="kicker">OUR COLLECTION</div>
+<h2>Shop Furniture</h2>
+<p>Premium pieces for every corner of your home.</p>
+</div>
+</div>
+
+<div class="filters">
+
+<button class="filter active" onclick="filterProducts('all',this)">
+All
+</button>
+
+<button class="filter" onclick="filterProducts('bed',this)">
+Beds
+</button>
+
+<button class="filter" onclick="filterProducts('wardrobe',this)">
+Wardrobes
+</button>
+
+<button class="filter" onclick="filterProducts('sofa',this)">
+Sofas
+</button>
+
+<button class="filter" onclick="filterProducts('dining',this)">
+Dining
+</button>
+
+<button class="filter" onclick="filterProducts('decor',this)">
+Decor
+</button>
+
+</div>
+
+<div class="products" id="productList">
+
+<!-- PRODUCT 1 -->
+
+<div class="pcard" data-type="bed">
+
+<div class="pimg">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80">
+<span class="pbadge">BESTSELLER</span>
+<button class="pwish">♡</button>
+</div>
+
+<div class="pinfo">
+
+<div class="pcat">BEDROOM</div>
+
+<div class="pname">
+Royal Wooden Bed
+</div>
+
+<div class="rating">
+★★★★★ 4.8
+</div>
+
+<div class="prices">
+<span class="now">₹24,999</span>
+<span class="was">₹31,999</span>
+</div>
+
+<button class="pbtn"
+onclick="quickOpen(
+'Royal Wooden Bed',
+'BEDROOM',
+'₹24,999',
+'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80'
+)">
+QUICK VIEW
+</button>
+
+</div>
+</div>
+
+<!-- PRODUCT 2 -->
+
+<div class="pcard" data-type="bed">
+
+<div class="pimg">
+<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=80">
+<span class="pbadge">NEW</span>
+<button class="pwish">♡</button>
+</div>
+
+<div class="pinfo">
+
+<div class="pcat">MODULAR BED</div>
+
+<div class="pname">
+Modern Storage Bed
+</div>
+
+<div class="rating">
+★★★★★ 4.9
+</div>
+
+<div class="prices">
+<span class="now">₹32,499</span>
+<span class="was">₹39,999</span>
+</div>
+
+<button class="pbtn"
+onclick="quickOpen(
+'Modern Storage Bed',
+'MODULAR BED',
+'₹32,499',
+'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80'
+)">
+QUICK VIEW
+</button>
+
+</div>
+</div>
+
+<!-- PRODUCT 3 -->
+
+<div class="pcard" data-type="wardrobe">
+
+<div class="pimg">
+<img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=700&q=80">
+<span class="pbadge">POPULAR</span>
+<button class="pwish">♡</button>
+</div>
+
+<div class="pinfo">
+
+<div class="pcat">STORAGE</div>
+
+<div class="pname">
+Premium Sliding Wardrobe
+</div>
+
+<div class="rating">
+★★★★★ 4.7
+</div>
+
+<div class="prices">
+<span class="now">₹28,990</span>
+<span class="was">₹35,500</span>
+</div>
+
+<button class="pbtn"
+onclick="quickOpen(
+'Premium Sliding Wardrobe',
+'STORAGE',
+'₹28,990',
+'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=900&q=80'
+)">
+QUICK VIEW
+</button>
+
+</div>
+</div>
+
+<!-- PRODUCT 4 -->
+
+<div class="pcard" data-type="sofa" id="sofas">
+
+<div class="pimg">
+<img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80">
+<span class="pbadge">SALE</span>
+<button class="pwish">♡</button>
+</div>
+
+<div class="pinfo">
+
+<div class="pcat">LIVING ROOM</div>
+
+<div class="pname">
+Premium Comfort Sofa
+</div>
+
+<div class="rating">
+★★★★★ 4.8
+</div>
+
+<div class="prices">
+<span class="now">₹36,999</span>
+<span class="was">₹45,999</span>
+</div>
+
+<button class="pbtn"
+onclick="quickOpen(
+'Premium Comfort Sofa',
+'LIVING ROOM',
+'₹36,999',
+'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+)">
+QUICK VIEW
+</button>
+
+</div>
+</div>
+
+<!-- PRODUCT 5 -->
+
+<div class="pcard" data-type="dining" id="dining">
+
+<div class="pimg">
+<img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=700&q=80">
+<button class="pwish">♡</button>
+</div>
+
+<div class="pinfo">
+
+<div class="pcat">DINING</div>
+
+<div class="pname">
+Modern Dining Set
+</div>
+
+<div class="rating">
+★★★★★ 4.6
+</div>
+
+<div class="prices">
+<span class="now">₹29,999</span>
+<span class="was">₹37,999</span>
+</div>
+
+<button class="pbtn"
+onclick="quickOpen(
+'Modern Dining Set',
+'DINING',
+'₹29,999',
+'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=900&q=80'
+)">
+QUICK VIEW
+</button>
+
+</div>
+</div>
+
+<!-- PRODUCT 6 -->
+
+<div class="pcard" data-type="decor" id="decor">
+
+<div class="pimg">
+<img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80">
+<span class="pbadge">TRENDING</span>
+<button class="pwish">♡</button>
+</div>
+
+<div class="pinfo">
+
+<div class="pcat">HOME DECOR</div>
+
+<div class="pname">
+Luxury Home Decor Set
+</div>
+
+<div class="rating">
+★★★★★ 4.7
+</div>
+
+<div class="prices">
+<span class="now">₹8,499</span>
+<span class="was">₹11,999</span>
+</div>
+
+<button class="pbtn"
+onclick="quickOpen(
+'Luxury Home Decor Set',
+'HOME DECOR',
+'₹8,499',
+'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80'
+)">
+QUICK VIEW
+</button>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- =========================
+     COLLECTION TILES
+========================= -->
+
+<section class="collection">
+
+<div class="collectionhead">
+
+<div class="kicker">CURATED FOR YOU</div>
+
+<h2>Explore Our Spaces</h2>
+
+<p>
+Furniture collections made to create beautiful,
+comfortable and functional homes.
+</p>
+
+</div>
+
+<div class="tiles">
+
+<div class="tile big">
+
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80">
+
+<div class="tiletext">
+<small>BEDROOM</small>
+<h3>Dream Bedrooms</h3>
+</div>
+
+</div>
+
+<div class="tile">
+
+<img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80">
+
+<div class="tiletext">
+<small>LIVING</small>
+<h3>Comfort Sofas</h3>
+</div>
+
+</div>
+
+<div class="tile">
+
+<img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80">
+
+<div class="tiletext">
+<small>DINING</small>
+<h3>Dining Spaces</h3>
+</div>
+
+</div>
+
+<div class="tile">
+
+<img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80">
+
+<div class="tiletext">
+<small>STORAGE</small>
+<h3>Smart Storage</h3>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- =========================
+     OFFER
+========================= -->
+
+<section class="offer">
+
+<small>LIMITED TIME OFFER</small>
+
+<h2>
+Create Your Dream Home.
+</h2>
+
+<p>
+Explore selected furniture pieces with special
+prototype pricing and easy enquiry options.
+</p>
+
+<button onclick="go('products')">
+SHOP NOW
+</button>
+
+</section>
+
+<!-- =========================
+     QUICK VIEW
+========================= -->
+
+<div class="quick" id="quick">
+
+<div class="quickbox">
+
+<button class="qclose" onclick="quickClose()">×</button>
+
+<div class="qimage">
+<img id="qImg" src="">
+</div>
+
+<div class="qcat" id="qCat"></div>
+
+<h2 class="qtitle" id="qTitle"></h2>
+
+<div class="qprice" id="qPrice"></div>
+
+<p class="qdesc">
+Premium furniture designed for modern homes.
+Customize your selection and contact ANUJ HOMES
+for availability, dimensions and delivery details.
+</p>
+
+<div class="qbuttons">
+
+<button class="qcart" onclick="addCart();quickClose()">
+ADD TO CART
+</button>
+
+<button class="qbuy" onclick="buyNow()">
+ENQUIRE NOW
+</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- =========================
+     CART
+========================= -->
+
+<div class="cart" id="cartPanel">
+
+<div class="carthead">
+
+<h3>Your Cart</h3>
+
+<button class="cartclose" onclick="cartClose()">×</button>
+
+</div>
+
+<div class="cartbody" id="cartBody">
+
+<div class="empty" id="emptyCart">
+
+<div class="bag">🛒</div>
+
+<h4>Your cart is empty</h4>
+
+<p>
+Add your favourite furniture pieces
+to see them here.
+</p>
+
+</div>
+
+<div id="cartItems"></div>
+
+<div class="carttotal" id="cartTotalBox" style="display:none">
+
+<div class="totalrow">
+<span>Total</span>
+<span id="totalPrice">₹0</span>
+</div>
+
+<button class="checkout" onclick="checkout()">
+PROCEED TO ENQUIRE
+</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- =========================
+     WHATSAPP
+========================= -->
+
+<a
+class="whatsapp"
+href="https://wa.me/919582907643?text=Hello%20ANUJ%20HOMES%2C%20I%20want%20to%20know%20about%20your%20furniture."
+target="_blank"
+>
+◉
+</a>
+
+<script>
+
+/* =========================
+   PRODUCT FILTER
+========================= */
+
+function filterProducts(type,button){
+
+const cards=document.querySelectorAll(".pcard");
+const buttons=document.querySelectorAll(".filter");
+
+buttons.forEach(b=>{
+b.classList.remove("active");
+});
+
+button.classList.add("active");
+
+cards.forEach(card=>{
+
+if(type==="all"){
+card.style.display="";
+return;
+}
+
+if(card.dataset.type===type){
+card.style.display="";
+}else{
+card.style.display="none";
+}
+
+});
+
+}
+
+/* =========================
+   QUICK VIEW
+========================= */
+
+function quickOpen(title,cat,price,img){
+
+document.getElementById("qTitle").innerText=title;
+document.getElementById("qCat").innerText=cat;
+document.getElementById("qPrice").innerText=price;
+document.getElementById("qImg").src=img;
+
+document.getElementById("quick").classList.add("open");
+
+document.body.style.overflow="hidden";
+
+}
+
+function quickClose(){
+
+document.getElementById("quick").classList.remove("open");
+
+document.body.style.overflow="";
+
+}
+
+/* CLOSE QUICK ON BACKDROP */
+
+document.getElementById("quick").addEventListener("click",function(e){
+
+if(e.target===this){
+quickClose();
+}
+
+});
+
+/* =========================
+   CART SYSTEM
+========================= */
+
+let cart=[];
+
+function addCart(){
+
+const title=document.getElementById("qTitle")?.innerText;
+
+const price=document.getElementById("qPrice")?.innerText;
+
+const img=document.getElementById("qImg")?.src;
+
+if(title){
+
+cart.push({
+title:title,
+price:price,
+img:img
+});
+
+}else{
+
+cart.push({
+title:"Selected Furniture",
+price:"₹0",
+img:""
+});
+
+}
+
+renderCart();
+
+document.getElementById("count").innerText=cart.length;
+
+alert("Product added to cart.");
+
+}
+
+function renderCart(){
+
+const items=document.getElementById("cartItems");
+const empty=document.getElementById("emptyCart");
+const totalBox=document.getElementById("cartTotalBox");
+
+if(cart.length===0){
+
+empty.style.display="block";
+items.innerHTML="";
+totalBox.style.display="none";
+return;
+
+}
+
+empty.style.display="none";
+
+let html="";
+
+cart.forEach((item,index)=>{
+
+html+=`
+
+<div class="cartitem">
+
+${item.img ? `<img src="${item.img}">` : ""}
+
+<div>
+
+<h4>${item.title}</h4>
+
+<small>${item.price}</small>
+
+<div class="qty">
+
+<button onclick="removeItem(${index})">−</button>
+
+<span>1</span>
+
+<button onclick="addOne()">+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+items.innerHTML=html;
+
+totalBox.style.display="block";
+
+document.getElementById("totalPrice").innerText=
+"₹"+calculateTotal();
+
+}
+
+function calculateTotal(){
+
+let total=0;
+
+cart.forEach(item=>{
+
+let value=item.price
+.replace("₹","")
+.replace(/,/g,"")
+.trim();
+
+let num=parseInt(value);
+
+if(!isNaN(num)){
+total+=num;
+}
+
+});
+
+return total.toLocaleString("en-IN");
+
+}
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+document.getElementById("count").innerText=cart.length;
+
+renderCart();
+
+}
+
+function addOne(){
+
+alert("Quantity control can be connected to full checkout in the final website.");
+
+}
+
+/* =========================
+   CART OPEN
+========================= */
+
+function cartOpen(){
+
+document.getElementById("cartPanel").classList.add("open");
+
+document.body.style.overflow="hidden";
+
+renderCart();
+
+}
+
+function cartClose(){
+
+document.getElementById("cartPanel").classList.remove("open");
+
+document.body.style.overflow="";
+
+}
+
+/* =========================
+   BUY / ENQUIRE
+========================= */
+
+function buyNow(){
+
+const title=document.getElementById("qTitle").innerText;
+
+const message=
+"Hello ANUJ HOMES,%0A%0A"+
+"I am interested in: "+title+
+"%0A%0APlease share details, price and availability.";
+
+window.open(
+"https://wa.me/919582907643?text="+message,
+"_blank"
+);
+
+}
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function checkout(){
+
+let message="Hello ANUJ HOMES,%0A%0AI want to enquire about:%0A";
+
+cart.forEach(item=>{
+message+="• "+item.title+" - "+item.price+"%0A";
+});
+
+message+="%0APlease share availability and delivery details.";
+
+window.open(
+"https://wa.me/919582907643?text="+message,
 </body>
     </html>
